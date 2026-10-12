@@ -142,7 +142,7 @@
   /* ---------- 6. RSVP — SPLITFORMS EMAIL + SMS ---------- */
   const rsvpForm = $("#rsvpForm");
   const thanks = $("#thanks");
-  const SMS_NUMBER = "09650682102";
+  const SMS_NUMBER = "09650682101";
 
   // ============================================================
   // ✏️ SPLITFORMS SETUP — FILL IN THESE TWO VALUES
