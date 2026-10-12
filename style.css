@@ -143,7 +143,6 @@ button,input,select,textarea{font:inherit;color:inherit}
   width:36px;
   height:auto;
   opacity:0;
-  /* Multi-layer glow — warm gold + white core + outer bloom */
   filter:
     drop-shadow(0 0 6px rgba(255,255,240,1))
     drop-shadow(0 0 14px rgba(255,230,180,.95))
@@ -164,13 +163,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .angel--2,  .angel--5,  .angel--8,  .angel--11, .angel--15, .angel--19 { width:28px; }
 .angel--4,  .angel--7,  .angel--10, .angel--12, .angel--14, .angel--16 { width:34px; }
 .angel--18, .angel--20 { width:24px; }
-
-/* Size variations */
-.angel--1,  .angel--3,  .angel--6,  .angel--9,  .angel--13, .angel--17 { width:42px; }
-.angel--2,  .angel--5,  .angel--8,  .angel--11, .angel--15, .angel--19 { width:28px; }
-.angel--4,  .angel--7,  .angel--10, .angel--12, .angel--14, .angel--16 { width:34px; }
-.angel--18, .angel--20 { width:24px; }
-
 
 /* ============================================================
    PETER PAN GLITTER DUST — trails behind each angel
@@ -561,6 +553,32 @@ button,input,select,textarea{font:inherit;color:inherit}
   .entourage__grid--3{grid-template-columns:1fr}
 }
 
+/* Extra spacing above Banner Bearer / Flower Ladies */
+.entourage__title--spaced{
+  margin-top:3.5rem;
+}
+
+/* Ring / Coin / Bible Bearer — stacked vertically in the center */
+.entourage__bearers{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2.4rem;
+  max-width:420px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.entourage__bearer{
+  text-align:center;
+  width:100%;
+}
+
+.entourage__bearer .entourage__title{
+  margin-bottom:.6rem;
+}
+
 /* ============================================================
    GALLERY
    ============================================================ */
@@ -594,6 +612,102 @@ button,input,select,textarea{font:inherit;color:inherit}
 .thanks{text-align:center;padding:2.6rem 1.5rem;border:1px solid rgba(255,255,255,.25);border-radius:8px;background:rgba(255,255,255,.06);margin-top:2rem;animation:fadeUp .7s var(--ease) both}
 .thanks__title{font-size:3rem;color:var(--pink);margin-bottom:.8rem}
 .thanks p{color:rgba(255,255,255,.85);font-family:var(--ff-serif);font-size:1.1rem}
+
+/* ============================================================
+   LOCATION MAP
+   ============================================================ */
+.map-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2.5rem;
+  max-width:960px;
+  margin:0 auto;
+}
+@media (max-width:720px){
+  .map-grid{grid-template-columns:1fr;gap:3rem;}
+}
+
+.map-card{
+  text-align:center;
+  padding:2rem 1.5rem 2.4rem;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 20px 45px -30px rgba(43,38,34,.5);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.map-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px -35px rgba(43,38,34,.65);
+}
+
+.map-card__imgwrap{
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border-radius:8px;
+  background:var(--cream-2);
+  margin-bottom:1.5rem;
+}
+.map-card__img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 1.2s var(--ease-cine);
+}
+.map-card:hover .map-card__img{
+  transform:scale(1.06);
+}
+
+.map-card__label{
+  font-family:var(--ff-serif);
+  font-style:italic;
+  font-size:.85rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:.5rem;
+}
+.map-card__venue{
+  font-family:var(--ff-serif);
+  font-weight:500;
+  font-size:clamp(1.1rem,2.4vw,1.3rem);
+  color:var(--sage-dark);
+  line-height:1.35;
+  margin-bottom:.35rem;
+}
+.map-card__loc{
+  font-family:var(--ff-serif);
+  font-style:italic;
+  font-size:.95rem;
+  color:var(--ink-soft);
+  margin-bottom:1.8rem;
+}
+
+.map-card__qr{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.7rem;
+  padding:1.2rem;
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin-bottom:1.5rem;
+}
+.map-card__qr img{
+  width:150px;
+  height:150px;
+  display:block;
+  border-radius:4px;
+}
+.map-card__qr-label{
+  font-family:var(--ff-serif);
+  font-style:italic;
+  font-size:.78rem;
+  letter-spacing:.14em;
+  color:var(--ink-soft);
+}
 
 /* ============================================================
    FAQ
@@ -750,36 +864,19 @@ button,input,select,textarea{font:inherit;color:inherit}
 .toast.is-show{opacity:1;transform:translate(-50%,0)}
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width:600px){
-  .landing__date{letter-spacing:.32em;font-size:.85rem}
-  .monogram{width:clamp(180px,50vw,240px);height:clamp(180px,50vw,240px)}
-  .landing__corner{width:130px;height:130px}
-  .angel{width:120px}
-  .angel--2{width:90px}
-  .hero{padding:6rem 1.2rem 5rem}
-  .countdown{gap:.5rem}
-  .cd{padding:1.2rem .3rem}
-  .dresscode__swatches{gap:1.2rem}
-  .swatch__dot{width:44px;height:44px}
-}
-
-/* ============================================================
    AMBIENT LAYER — falling petals + recurring angels
    ============================================================ */
 .ambient{
   position:fixed;
   inset:0;
-  z-index:1;                /* behind content, above page background */
+  z-index:1;
   pointer-events:none;
   overflow:hidden;
   opacity:0;
-  transition:opacity 1.5s ease 2.4s;  /* fades in after the curtain opens */
+  transition:opacity 1.5s ease 2.4s;
 }
 body.unlocked .ambient{opacity:1}
 
-/* ---- Falling flower petals ---- */
 .petals{position:absolute;inset:0;overflow:hidden}
 
 .petal{
@@ -795,7 +892,6 @@ body.unlocked .ambient{opacity:1}
   will-change:transform,opacity;
 }
 
-/* Petals — mix of sizes, speeds, delays and horizontal positions */
 .petal:nth-child(1){left:5%; animation-duration:13s; animation-delay:0s;   width:14px; height:14px;}
 .petal:nth-child(2){left:12%;animation-duration:16s; animation-delay:3s;   width:10px; height:10px;}
 .petal:nth-child(3){left:20%;animation-duration:14s; animation-delay:6s;}
@@ -815,8 +911,6 @@ body.unlocked .ambient{opacity:1}
 .petal:nth-child(17){left:72%;animation-duration:18.5s;animation-delay:12s;width:9px;  height:9px;}
 .petal:nth-child(18){left:90%;animation-duration:13s;animation-delay:5s;}
 
-/* ---- Ambient angels — appear every 8 seconds, glide across ---- */
-/* ---- Ambient angels — appear every 8 seconds, glide across ---- */
 .ambient-angels{position:absolute;inset:0;overflow:hidden}
 
 .ambient-angel{
@@ -844,9 +938,6 @@ body.unlocked .ambient{opacity:1}
   animation:ambientAngel2 20s ease-in-out 10s infinite;
 }
 
-/* ============================================================
-   AMBIENT KEYFRAMES
-   ============================================================ */
 @keyframes petalFall{
   0%{
     transform:translateY(0) translateX(0) rotate(0deg);
@@ -877,6 +968,21 @@ body.unlocked .ambient{opacity:1}
   12%  { opacity:1; }
   50%  { transform:translate(50vw,20px) rotate(-3deg); opacity:1; }
   88%  { opacity:1; }
-  100% { transform:translate(120vw,40px) rotate(2deg); opacity:0; }
+  100% { transform:translate(120vw,40deg) rotate(2deg); opacity:0; }
 }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:600px){
+  .landing__date{letter-spacing:.32em;font-size:.85rem}
+  .monogram{width:clamp(180px,50vw,240px);height:clamp(180px,50vw,240px)}
+  .landing__corner{width:130px;height:130px}
+  .angel{width:120px}
+  .angel--2{width:90px}
+  .hero{padding:6rem 1.2rem 5rem}
+  .countdown{gap:.5rem}
+  .cd{padding:1.2rem .3rem}
+  .dresscode__swatches{gap:1.2rem}
+  .swatch__dot{width:44px;height:44px}
+}
